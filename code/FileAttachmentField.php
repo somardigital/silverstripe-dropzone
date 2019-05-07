@@ -812,7 +812,7 @@ class FileAttachmentField extends FileField {
      * @return HTTPResponse
      * @return HTTPResponse
      */
-    public function upload(SS_HTTPRequest $request) {
+    public function upload(HTTPRequest $request) {
       
         $name = $this->getSetting('paramName');
         $files = (!empty($_FILES[$name]) ? $_FILES[$name] : array());
