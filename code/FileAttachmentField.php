@@ -491,7 +491,7 @@ class FileAttachmentField extends FileField {
             if ($data->hasOneComponent($fieldName)) {
                 $id = $data->{$fieldName.'ID'};
                 if ($id) {
-                   $ids[] = $id; 
+                   $ids[] = $id;
                 }
             } else if ($data->hasManyComponent($fieldName) || $data->manyManyComponent($fieldName)) {
                 $files = $data->{$fieldName}();
@@ -500,7 +500,7 @@ class FileAttachmentField extends FileField {
                         if (!$file->exists()) {
                             continue;
                         }
-                        $ids[] = $file->ID; 
+                        $ids[] = $file->ID;
                     }
                 }
             }
@@ -764,7 +764,7 @@ class FileAttachmentField extends FileField {
     public function isCMS() {
         return Controller::curr() instanceof LeftAndMain;
     }
-    
+
     /**
      * @note these are user-friendlier versions of internal PHP errors reported back in the ['error'] value of an upload
      * @return string
@@ -813,7 +813,7 @@ class FileAttachmentField extends FileField {
      * @return HTTPResponse
      */
     public function upload(HTTPRequest $request) {
-      
+
         $name = $this->getSetting('paramName');
         $files = (!empty($_FILES[$name]) ? $_FILES[$name] : array());
         $tmpFiles = array();
@@ -823,14 +823,14 @@ class FileAttachmentField extends FileField {
           $error_message = _t('FileAttachmentField.UPLOADFORBIDDEN', 'Files cannot be uploaded via this form at the current time.');
           return $this->httpError(403, $error_message);
         }
-        
+
         // No files detected in the upload, this can occur if post_max_size is < the upload size
         $value = $request->postVar($name);
         if(empty($files) || empty($value)) {
           $error_message = _t('FileAttachmentField.NOFILESUPLOADED', 'No files were detected in your upload. Please try again later.');
           return $this->httpError(400, $error_message);
         }
-        
+
         // Security token check, must go after above check as a low post_max_size can scrub the Security Token name from the request
         $form = $this->getForm();
         if($form) {
@@ -1031,7 +1031,7 @@ class FileAttachmentField extends FileField {
      * @return  string
      */
     public function RootThumbnailsDir() {
-        return $this->getSetting('thumbnailsDir') ?: DROPZONE_DIR.'/images/file-icons';
+        return $this->getSetting('thumbnailsDir') ?: 'resources/'. DROPZONE_DIR .'/images/file-icons';
     }
 
     /**

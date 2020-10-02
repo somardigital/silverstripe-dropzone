@@ -67,7 +67,7 @@ class DropzoneFile extends DataExtension {
 	 */
 	protected function getFilenameForType($ext, $size) {
 		return sprintf(
-					'%s/images/file-icons/%spx/%s.png',
+					'resources/%s/images/file-icons/%spx/%s.png',
 					DROPZONE_DIR,
 					$size,
 					strtolower($ext)
