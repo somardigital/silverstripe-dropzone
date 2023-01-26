@@ -512,7 +512,8 @@ class FileAttachmentField extends FileField
             //       an already saved DataObject.
             $fieldName = $this->getName();
             $ids = array();
-            if ($data->hasOneComponent($fieldName)) {
+
+            if ($data->getSchema()->hasOneComponent($data::class, $fieldName)) {
                 $id = $data->{$fieldName . 'ID'};
                 if ($id) {
                     $ids[] = $id;
