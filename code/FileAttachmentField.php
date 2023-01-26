@@ -518,7 +518,7 @@ class FileAttachmentField extends FileField
                 if ($id) {
                     $ids[] = $id;
                 }
-            } else if ($data->hasManyComponent($fieldName) || $data->manyManyComponent($fieldName)) {
+            } else if ($data->getSchema()->hasManyComponent($data::class, $fieldName) || $data->getSchema()->manyManyComponent($data::class, $fieldName)) {
                 $files = $data->{$fieldName}();
                 if ($files) {
                     foreach ($files as $file) {
