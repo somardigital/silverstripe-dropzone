@@ -15,7 +15,7 @@
                 <% if $File.IsImage && $File.Orientation > -1 %>
                     src="$File.Fill($Scope.SelectedThumbnailWidth, $Scope.SelectedThumbnailHeight).URL"
                 <% else %>
-                    src="/resources/dropzone/images/file-icons/{$File.Extension.LowerCase}.png" onerror="this.src='/resources/dropzone/images/file-icons/_blank.png'" onload="this.parentNode.style.backgroundImage='url('+this.src+')';this.style.display='none';"
+                    src="/resources/dropzone/images/file-icons/128px/{$File.Extension.LowerCase}.png" onerror="this.src='/resources/dropzone/images/file-icons/128px/_blank.png'" onload="this.parentNode.style.backgroundImage='url('+this.src+')';this.style.display='none';"
                 <% end_if %>
             >
     </span>
