@@ -15,7 +15,7 @@
                 <% if $File.IsImage && $File.Orientation > -1 %>
                     src="$File.Fill($Scope.SelectedThumbnailWidth, $Scope.SelectedThumbnailHeight).URL"
                 <% else %>
-                    src="/resources/dropzone/images/file-icons/128px/{$File.Extension.LowerCase}.png" onerror="this.src='/resources/dropzone/images/file-icons/128px/_blank.png'" onload="this.parentNode.style.backgroundImage='url('+this.src+')';this.style.display='none';"
+                    src="/_resources/dropzone/images/file-icons/128px/{$File.Extension.LowerCase}.png" onerror="this.src='/_resources/dropzone/images/file-icons/128px/_blank.png'" onload="this.parentNode.style.backgroundImage='url('+this.src+')';this.style.display='none';"
                 <% end_if %>
             >
     </span>
@@ -28,13 +28,13 @@
         <% if $Scope.CanDetach %>
             <span data-detach class="dropzone-action detach">
                 <span><%t Dropzone.DETACHFILE 'remove' %></span>
-                <img src="/resources/dropzone/images/remove.png" width="16">
+                <img src="/_resources/dropzone/images/remove.png" width="16">
             </span>
         <% end_if %>
         <% if $Scope.CanDelete %>
             <span data-delete class="dropzone-action delete">
                 <span><%t Dropzone.MARKFORDELETION 'delete' %></span>
-                <img src="/resources/dropzone/images/trash.png" width="16">
+                <img src="/_resources/dropzone/images/trash.png" width="16">
             </span>
         <% end_if %>
     </span>
@@ -44,7 +44,7 @@
             <span>
                 <h5><%t Dropzone.REMOVED 'removed' %></h5>
                 <small><%t Dropzone.CHANGEAFTERSAVE 'The change will take effect after you save.' %></small>
-                <span data-delete-revert class="revert"><img src="/resources/dropzone/images/undo.png" width="16"></span>
+                <span data-delete-revert class="revert"><img src="/_resources/dropzone/images/undo.png" width="16"></span>
             </span>
         </span>
     <% end_if %>
@@ -53,7 +53,7 @@
             <span>
                 <h5><%t Dropzone.DELETED 'deleted' %></h5>
                 <small><%t Dropzone.CHANGEAFTERSAVE 'The change will take effect after you save.' %></small>
-                <span data-delete-revert class="revert"><img src="/resources/dropzone/images/undo.png" width="16"></span>
+                <span data-delete-revert class="revert"><img src="/_resources/dropzone/images/undo.png" width="16"></span>
             </span>
         </span>
     <% end_if %>
