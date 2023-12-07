@@ -140,9 +140,17 @@ class FileAttachmentField extends FileField
      */
     public static function get_filesize_from_ini()
     {
+		if (!function_exists('ini2bytes')) {
+			function ini2bytes($ini) {
+				$ini = trim($ini);
+				$s = array('g' => 1 << 30, 'm' => 1 << 20, 'k' => 1 << 10);
+				return intval($ini) * ($s[strtolower(substr($ini, -1))] ?: 1);
+			};
+		}
+
         $bytes = min(array(
-            File::ini2bytes(ini_get('post_max_size') ?: '8M'),
-            File::ini2bytes(ini_get('upload_max_filesize') ?: '2M')
+            ini2bytes(ini_get('post_max_size') ?: '8M'),
+            ini2bytes(ini_get('upload_max_filesize') ?: '2M')
         ));
 
         return floor($bytes / (1024 * 1024));
