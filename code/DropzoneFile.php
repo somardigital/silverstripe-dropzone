@@ -1,5 +1,7 @@
 <?php
 
+namespace UncleCheese\Dropzone;
+
 use SilverStripe\Assets\Folder;
 use SilverStripe\Assets\Image;
 use SilverStripe\Control\Director;

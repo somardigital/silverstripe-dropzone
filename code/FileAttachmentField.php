@@ -1,23 +1,25 @@
 <?php
 
-use SilverStripe\Forms\FileField;
-use SilverStripe\ORM\DataObjectInterface;
-use SilverStripe\View\Requirements;
+namespace UncleCheese\Dropzone;
+
+use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Folder;
+use SilverStripe\Assets\Image;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Config\Config;
-use SilverStripe\Assets\File;
-use SilverStripe\Assets\Folder;
-use SilverStripe\Assets\Image;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Admin\LeftAndMain;
-use SilverStripe\ORM\ManyManyList;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Forms\FileField;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DataObjectInterface;
+use SilverStripe\ORM\ManyManyList;
 use SilverStripe\ORM\RelationList;
+use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\UnsavedRelationList;
+use SilverStripe\View\Requirements;
 
 /**
  * Defines the FileAttachementField form field type
