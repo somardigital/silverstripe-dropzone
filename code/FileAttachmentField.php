@@ -2,6 +2,7 @@
 
 namespace UncleCheese\Dropzone;
 
+use Exception;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Folder;
@@ -11,6 +12,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Forms\FileField;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
@@ -215,12 +217,12 @@ class FileAttachmentField extends FileField
      */
     protected function defineFieldHolderRequirements()
     {
-        Requirements::javascript(DROPZONE_DIR . '/javascript/dropzone.js');
-        Requirements::javascript(DROPZONE_DIR . '/javascript/file_attachment_field.js');
+        Requirements::javascript('_resources/vendor/unclecheese/dropzone/javascript/dropzone.js');
+        Requirements::javascript('_resources/vendor/unclecheese/dropzone/javascript/file_attachment_field.js');
         if ($this->isCMS()) {
             Requirements::javascript(DROPZONE_DIR . '/javascript/file_attachment_field_backend.js');
         }
-        Requirements::css(DROPZONE_DIR . '/css/file_attachment_field.css');
+        Requirements::css('_resources/vendor/unclecheese/dropzone/css/file_attachment_field.css');
 
         if (!$this->getSetting('url')) {
             $this->settings['url'] = $this->Link('upload');
@@ -1347,7 +1349,9 @@ class FileAttachmentField extends FileField
      */
     protected function getDefaults()
     {
-        $file_path = BASE_PATH . '/' . DROPZONE_DIR . '/' . $this->config()->default_config_path;
+        // Get the file path dynamically
+        $file_path = ModuleResourceLoader::resourcePath('_resources/vendor/unclecheese/dropzone/javascript/default_config.json');
+
         if (!file_exists($file_path)) {
             throw new Exception("FileAttachmentField::getDefaults() - There is no config json file at $file_path");
         }
